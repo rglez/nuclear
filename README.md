@@ -24,11 +24,11 @@ The extensive documentation of the project will be soon available.
 
 
 # Changelog
-All notable changes to this project will be documented [in this file](./CHANGELOG.md).
+All notable changes to this project will be documented [in this file](https://github.com/rglez/nuclear/blob/main/CHANGELOG.md).
 
 
 # Contributing
-Please read the [contributor's guide](./CONTRIBUTING.md) if you are interested in advancing the project.
+Please read the [contributor's guide](https://github.com/rglez/nuclear/blob/main/CONTRIBUTING.md) if you are interested in advancing the project.
 
 ### Note
 This project has been set up using PyScaffold 4.5. For details and usage
