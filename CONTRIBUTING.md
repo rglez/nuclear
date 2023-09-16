@@ -1,30 +1,3 @@
-```{todo} THIS IS SUPPOSED TO BE AN EXAMPLE. MODIFY IT ACCORDING TO YOUR NEEDS!
-
-   The document assumes you are using a source repository service that promotes a
-   contribution model similar to [GitHub's fork and pull request workflow].
-   While this is true for the majority of services (like GitHub, GitLab,
-   BitBucket), it might not be the case for private repositories (e.g., when
-   using Gerrit).
-
-   Also notice that the code examples might refer to GitHub URLs or the text
-   might use GitHub specific terminology (e.g., *Pull Request* instead of *Merge
-   Request*).
-
-   Please make sure to check the document having these assumptions in mind
-   and update things accordingly.
-```
-
-```{todo} Provide the correct links/replacements at the bottom of the document.
-```
-
-```{todo} You might want to have a look on [PyScaffold's contributor's guide],
-
-   especially if your project is open source. The text should be very similar to
-   this template, but there are a few extra contents that you might decide to
-   also include, like mentioning labels of your issue tracker or automated
-   releases.
-```
-
 # Contributing
 
 Welcome to `nuclear` contributor's guide.
@@ -33,8 +6,7 @@ This document focuses on getting any potential contributor familiarized with
 the development processes, but [other kinds of contributions] are also appreciated.
 
 If you are new to using [git] or have never collaborated in a project previously,
-please have a look at [contribution-guide.org]. Other resources are also
-listed in the excellent [guide created by FreeCodeCamp] [^contrib1].
+please have a look at [contribution-guide.org].
 
 Please notice, all users and contributors are expected to be **open,
 considerate, reasonable, and respectful**. When in doubt,
@@ -47,11 +19,7 @@ If you experience bugs or general issues with `nuclear`, please have a look
 on the [issue tracker].
 If you don't see anything useful there, please feel free to fire an issue report.
 
-:::{tip}
-Please don't forget to include the closed issues in your search.
-Sometimes a solution was already reported, and the problem is considered
-**solved**.
-:::
+Please don't forget to include the closed issues in your search. Sometimes a solution was already reported, and the problem is considered **solved**.
 
 New issue reports should include information about your programming environment
 (e.g., operating system, Python version) and steps to reproduce the problem.
@@ -68,28 +36,9 @@ by adding missing information and correcting mistakes.
 This means that the docs are kept in the same repository as the project code, and
 that any documentation update is done in the same way was a code contribution.
 
-```{todo} Don't forget to mention which markup language you are using.
+Please notice that the [GitHub web interface] provides a quick way of propose changes in `nuclear`'s files. While this mechanism can be tricky for normal code contributions, it works perfectly fine for contributing to the docs, and can be quite handy.
 
-    e.g.,  [reStructuredText] or [CommonMark] with [MyST] extensions.
-```
-
-```{todo} If your project is hosted on GitHub, you can also mention the following tip:
-
-   :::{tip}
-      Please notice that the [GitHub web interface] provides a quick way of
-      propose changes in `nuclear`'s files. While this mechanism can
-      be tricky for normal code contributions, it works perfectly fine for
-      contributing to the docs, and can be quite handy.
-
-      If you are interested in trying this method out, please navigate to
-      the `docs` folder in the source [repository], find which file you
-      would like to propose changes and click in the little pencil icon at the
-      top, to open [GitHub's code editor]. Once you finish editing the file,
-      please write a message in the form at the bottom of the page describing
-      which changes have you made and what are the motivations behind them and
-      submit your proposal.
-   :::
-```
+If you are interested in trying this method out, please navigate to the `docs` folder in the source [repository], find which file you would like to propose changes and click in the little pencil icon at the top, to open [GitHub's code editor]. Once you finish editing the file, please write a message in the form at the bottom of the page describing which changes have you made and what are the motivations behind them and submit your proposal.
 
 When working on documentation changes in your local machine, you can
 compile them using [tox] :
@@ -107,12 +56,6 @@ python3 -m http.server --directory 'docs/_build/html'
 
 ## Code Contributions
 
-```{todo} Please include a reference or explanation about the internals of the project.
-
-   An architecture description, design principles or at least a summary of the
-   main concepts will make it easy for potential contributors to get started
-   quickly.
-```
 
 ### Submit an issue
 
@@ -134,7 +77,7 @@ source <PATH TO VENV>/bin/activate
 or [Miniconda]:
 
 ```
-conda create -n nuclear python=3 six virtualenv pytest pytest-cov
+conda create -n nuclear python=3
 conda activate nuclear
 ```
 
@@ -148,7 +91,7 @@ conda activate nuclear
 3. Clone this copy to your local disk:
 
    ```
-   git clone git@github.com:YourLogin/nuclear.git
+   git clone git@github.com:rglez/nuclear.git
    cd nuclear
    ```
 
@@ -163,15 +106,6 @@ conda activate nuclear
    ```{todo} if you are not using pre-commit, please remove the following item:
    ```
 
-5. Install [pre-commit]:
-
-   ```
-   pip install pre-commit
-   pre-commit install
-   ```
-
-   `nuclear` comes with a lot of hooks configured to automatically help the
-   developer to check the code being written.
 
 ### Implement your changes
 
@@ -197,27 +131,12 @@ conda activate nuclear
 
    to record your changes in [git].
 
-   ```{todo} if you are not using pre-commit, please remove the following item:
-   ```
-
-   Please make sure to see the validation messages from [pre-commit] and fix
-   any eventual issues.
-   This should automatically use [flake8]/[black] to check/fix the code style
-   in a way that is compatible with the project.
-
-   :::{important}
-   Don't forget to add unit tests and documentation in case your
-   contribution adds an additional feature and is not just a bugfix.
-
-   Moreover, writing a [descriptive commit message] is highly recommended.
-   In case of doubt, you can check the commit history with:
+> Don't forget to add unit tests and documentation in case your contribution adds a feature and is not just a bugfix. Moreover, writing a [descriptive commit message] is highly recommended. In case of doubt, you can check the commit history to look for recurring communication patterns with:
 
    ```
    git log --graph --decorate --pretty=oneline --abbrev-commit --all
    ```
 
-   to look for recurring communication patterns.
-   :::
 
 5. Please check that your changes don't break any unit tests with:
 
@@ -225,10 +144,7 @@ conda activate nuclear
    tox
    ```
 
-   (after having installed [tox] with `pip install tox` or `pipx`).
-
-   You can also use [tox] to run several other pre-configured tasks in the
-   repository. Try `tox -av` to see a list of the available checks.
+   (after having installed [tox] with `pip install tox` or `pipx`). You can also use [tox] to run several other pre-configured tasks in the repository. Try `tox -av` to see a list of the available checks.
 
 ### Submit your contribution
 
@@ -238,16 +154,9 @@ conda activate nuclear
    git push -u origin my-feature
    ```
 
-2. Go to the web page of your fork and click "Create pull request"
-   to send your changes for review.
+2. Go to the web page of your fork and click "Create pull request" to send your changes for review. Find more detailed information in [creating a PR]. You might also want to open the PR as a draft first and mark it as ready for review after the feedbacks from the continuous integration (CI) system or any required fixes.
 
-   ```{todo} if you are using GitHub, you can uncomment the following paragraph
 
-      Find more detailed information in [creating a PR]. You might also want to open
-      the PR as a draft first and mark it as ready for review after the feedbacks
-      from the continuous integration (CI) system or any required fixes.
-
-   ```
 
 ### Troubleshooting
 
@@ -306,12 +215,6 @@ package:
 
 ### Releases
 
-```{todo} This section assumes you are using PyPI to publicly release your package.
-
-   If instead you are using a different/private package index, please update
-   the instructions accordingly.
-```
-
 If you are part of the group of maintainers and have correct user permissions
 on [PyPI], the following steps can be used to release a new version for
 `nuclear`:
@@ -329,12 +232,6 @@ on [PyPI], the following steps can be used to release a new version for
    500KB), unwanted clutter may have been accidentally included.
 6. Run `tox -e publish -- --repository pypi` and check that everything was
    uploaded to [PyPI] correctly.
-
-[^contrib1]: Even though, these resources focus on open source projects and
-    communities, the general ideas behind collaborating with other developers
-    to collectively create software are general and can be applied to all sorts
-    of environments, including private companies and proprietary code bases.
-
 
 [black]: https://pypi.org/project/black/
 [commonmark]: https://commonmark.org/
@@ -364,8 +261,5 @@ on [PyPI], the following steps can be used to release a new version for
 [virtualenv]: https://virtualenv.pypa.io/en/stable/
 
 
-```{todo} Please review and change the following definitions:
-```
-
-[repository]: https://github.com/<USERNAME>/nuclear
-[issue tracker]: https://github.com/<USERNAME>/nuclear/issues
+[repository]: https://github.com/rglez/nuclear
+[issue tracker]: https://github.com/rglez/nuclear/issues
