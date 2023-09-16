@@ -1,15 +1,3 @@
-<!-- These are examples of badges you might want to add to your README:
-     please update the URLs accordingly
-
-[![Built Status](https://api.cirrus-ci.com/github/<USER>/nuclear.svg?branch=main)](https://cirrus-ci.com/github/<USER>/nuclear)
-[![ReadTheDocs](https://readthedocs.org/projects/nuclear/badge/?version=latest)](https://nuclear.readthedocs.io/en/stable/)
-[![Coveralls](https://img.shields.io/coveralls/github/<USER>/nuclear/main.svg)](https://coveralls.io/r/<USER>/nuclear)
-
-[![Conda-Forge](https://img.shields.io/conda/vn/conda-forge/nuclear.svg)](https://anaconda.org/conda-forge/nuclear)
-[![Monthly Downloads](https://pepy.tech/badge/nuclear/month)](https://pepy.tech/project/nuclear)
-[![Twitter](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&label=Twitter)](https://twitter.com/nuclear)
--->
-
 # NUCLEAR
 NUCLEAR (*NUCLeotide AssembleR*) is a Python package designed primarily to generate oligonucleotide sequences from one or several mono-nucleotide explorations returned by the MCSS docking method.
 
