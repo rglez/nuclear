@@ -3,9 +3,9 @@ import fnmatch
 import os
 import pickle
 import shutil
+import subprocess
 import tarfile
 from os.path import join, basename, abspath, dirname
-from subprocess import run
 
 
 def finder(pattern, root=os.curdir):
@@ -59,7 +59,14 @@ remove_dir(results_dir)
 cfgs = list(finder('*.cfg', examples_dir))
 os.chdir(examples_dir)
 nuclear_py = shutil.which('nuclear')
-runs = [run(f'{nuclear_py} {cfg}', shell=True) for cfg in cfgs]
+
+for cfg in cfgs:
+    process = subprocess.Popen([nuclear_py, cfg], stdout=subprocess.PIPE,
+                               stderr=subprocess.PIPE)
+    output, error = process.communicate()
+    if process.returncode != 0:
+        raise Exception(
+            f"File handling failed {process.returncode} {output} {error}")
 
 # ____ extract this_version data ______________________________________________
 results_data = dict()
