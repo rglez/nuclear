@@ -19,16 +19,20 @@ gs_basename = 'results-GS-001'
 gs_dir = os.path.join(examples_dir, gs_basename)
 gs_tar = join(examples_dir, f'{gs_basename}.tar')
 
-
 # >>>> clean tests data <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 hp.remove_dir(gs_dir)
 hp.remove_dir(results_dir)
-
 
 # >>>> run nuclear on each cfg case <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 cfgs = list(hp.finder('*.cfg', examples_dir))
 os.chdir(examples_dir)
 nuclear_py = shutil.which('nuclear')
+
+
+def test_nuclear_is_callable():
+    assert nuclear_py
+
+
 runs = [run(f'{nuclear_py} {cfg}', shell=True) for cfg in cfgs]
 
 
