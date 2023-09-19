@@ -55,3 +55,4 @@ MANIFEST
 
 # my own ignores
 tests/examples/results/*
+tests/examples/results*/*

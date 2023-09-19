@@ -81,5 +81,5 @@ def test_same_number_of_files_produced(target_data, gold_standard_data):
                     f'\n{target_file_path} offending identity comparison.'
 
     # cleaning after testing
-    hp.remove_dir(gs_dir)
-    hp.remove_dir(results_dir)
+    # hp.remove_dir(gs_dir)
+    # hp.remove_dir(results_dir)
