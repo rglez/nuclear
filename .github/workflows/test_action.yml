@@ -23,9 +23,9 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           pip install -r requirements.txt nuklear
           python -m pip install --upgrade nuklear
+      - uses: actions/checkout@v4
       - name: Get directory
         run: ls ./*
       - name: Test with pytest
-        uses: actions/setup-python@v4
         run: |
           pytest
