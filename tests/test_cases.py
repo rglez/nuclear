@@ -1,7 +1,7 @@
 # Created by roy.gonzalez-aleman at 17/09/2023
 import filecmp
 import pickle
-from os.path import join, dirname
+from os.path import join, dirname, abspath
 
 import pytest
 
@@ -17,6 +17,9 @@ def unpickle_from_file(file_name):
     with open(file_name, 'rb') as file:
         data = pickle.load(file)
     return data
+
+
+tests_dir = abspath(dirname(__file__))
 
 
 @pytest.fixture()
