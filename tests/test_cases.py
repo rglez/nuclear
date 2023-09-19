@@ -8,20 +8,22 @@ from subprocess import run
 
 import pytest
 
-import helpers as hp
+from . import helpers as hp
 
 # >>>> directories declaration <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-tests_dir = '/home/roy.gonzalez-aleman/RoyHub/nuclear/tests'
-# tests_dir = os.path.abspath(os.path.dirname(__file__))
+# tests_dir = '/home/roy.gonzalez-aleman/RoyHub/nuclear/tests'
+tests_dir = os.path.abspath(os.path.dirname(__file__))
 examples_dir = join(tests_dir, 'examples')
 results_dir = join(examples_dir, 'results')
 gs_basename = 'results-GS-001'
 gs_dir = os.path.join(examples_dir, gs_basename)
 gs_tar = join(examples_dir, f'{gs_basename}.tar')
 
+
 # >>>> clean tests data <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 hp.remove_dir(gs_dir)
 hp.remove_dir(results_dir)
+
 
 # >>>> run nuclear on each cfg case <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 cfgs = list(hp.finder('*.cfg', examples_dir))
@@ -74,6 +76,6 @@ def test_same_number_of_files_produced(target_data, gold_standard_data):
                                    shallow=False), \
                     f'\n{target_file_path} offending identity comparison.'
 
-
+    # cleaning after testing
     hp.remove_dir(gs_dir)
     hp.remove_dir(results_dir)
