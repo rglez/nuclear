@@ -1,13 +1,9 @@
 # Created by roy.gonzalez-aleman at 17/09/2023
 import filecmp
 import pickle
-from os.path import join, dirname, abspath
-from subprocess import run
+from os.path import join, dirname
 
 import pytest
-
-tests_dir = abspath(dirname(__file__))
-run(f'python {join(tests_dir, "01_arrange.py")}', shell=True)
 
 
 def unpickle_from_file(file_name):
