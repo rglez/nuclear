@@ -32,7 +32,7 @@ jobs:
 
       - name: Test with pytest
         run: |
-          ls -R ./
           python ./tests/01_arrange.py
-          python ./tests/02_act.py
+          ls -R ./
+          python ./tests/02_act.py ./
           pytest ./tests/test_cases.py
