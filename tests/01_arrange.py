@@ -70,8 +70,8 @@ for cfg in cfgs:
 
 # ____ extract this_version data ______________________________________________
 results_data = dict()
-for case in os.listdir(results_dir):
-    case_files = {basename(x): x for x in finder('*', join(results_dir, case))}
+for case in os.listdir(abspath('./results')):
+    case_files = {basename(x): x for x in finder('*', join('./results', case))}
     results_data.update({case: case_files})
 pickle_to_file(results_data, 'target_data.pick')
 
