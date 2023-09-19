@@ -25,7 +25,7 @@ jobs:
           python -m pip install --upgrade nuklear
       - uses: actions/checkout@v4
       - name: Get directory
-        run: ls ./*
+        run: ls -R ./*
       - name: Test with pytest
         run: |
           pytest
