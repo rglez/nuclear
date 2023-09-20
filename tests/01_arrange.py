@@ -1,8 +1,10 @@
 # Created by roy.gonzalez-aleman at 19/09/2023
 import fnmatch
 import os
+import pickle
 import shutil
-from os.path import join, abspath, dirname
+import tarfile
+from os.path import join, abspath, dirname, basename
 
 
 def finder(pattern, root=os.curdir):
@@ -25,6 +27,20 @@ def remove_dir(path_to_dir):
         pass
 
 
+def pickle_to_file(data, file_name):
+    """ Serialize data using **pickle**.
+
+    Args:
+        data (object)  : any serializable object.
+        file_name (str): name of the **pickle** file to be created.
+    Returns:
+        (str): file_name
+    """
+    with open(file_name, 'wb') as file:
+        pickle.dump(data, file)
+    return file_name
+
+
 # ____ directories declaration ________________________________________________
 tests_dir = abspath(dirname(__file__))
 # tests_dir = abspath('/home/roy.gonzalez-aleman/RoyHub/nuclear/tests')
@@ -44,11 +60,25 @@ os.chdir(examples_dir)
 nuclear_py = shutil.which('nuclear')
 
 for cfg in cfgs:
-    # process = subprocess.Popen([nuclear_py, cfg], stdout=subprocess.PIPE,
-    #                            stderr=subprocess.PIPE)
-    # output, error = process.communicate()
-    # print(output)
-    # if process.returncode != 0:
-    #     raise Exception(
-    #         f"File handling failed {process.returncode} {output} {error}")
     os.system(f'{nuclear_py} {cfg}')
+
+# ____ extract gold standard data _____________________________________________
+with tarfile.open(gs_tar) as tar:
+    tar.extractall(examples_dir)
+
+assert os.path.exists(gs_tar)
+assert os.path.exists(gs_dir)
+
+gs_data = dict()
+for case in os.listdir(gs_dir):
+    case_files = {basename(x): x for x in finder('*', join(gs_dir, case))}
+    gs_data.update({case: case_files})
+pickle_to_file(gs_data, join(examples_dir, 'reference_data.pick'))
+
+
+# ____ extract this_version data ______________________________________________
+results_data = dict()
+for case in os.listdir(results_dir):
+    case_files = {basename(x): x for x in finder('*', join(results_dir, case))}
+    results_data.update({case: case_files})
+pickle_to_file(results_data, join(examples_dir, 'target_data.pick'))
