@@ -33,16 +33,24 @@ def pickle_to_file(data, file_name):
     return file_name
 
 
-root_dir = dirname(abspath(__file__))
-examples_dir = join(root_dir, 'examples')
-results_dir = join(root_dir, 'examples', 'results')
-gs_dir = join(root_dir, 'examples', 'results-GS-001')
-gs_tar = join(root_dir, 'examples', 'results-GS-001.tar')
+tests_dir = dirname(abspath(__file__))
+examples_dir = join(tests_dir, 'examples')
+results_dir = join(tests_dir, 'examples', 'results')
+gs_dir = join(tests_dir, 'examples', 'results-GS-001')
+gs_tar = join(tests_dir, 'examples', 'results-GS-001.tar')
 
-print(root_dir)
+# ____ extract gold standard data _____________________________________________
+with tarfile.open(gs_tar) as tar:
+    tar.extractall(examples_dir)
+
 assert os.path.exists(gs_tar)
-assert os.path.exists(examples_dir)
-assert os.path.exists(results_dir)
+assert os.path.exists(gs_dir)
+
+gs_data = dict()
+for case in os.listdir(gs_dir):
+    case_files = {basename(x): x for x in finder('*', join(gs_dir, case))}
+    gs_data.update({case: case_files})
+pickle_to_file(gs_data, 'reference_data.pick')
 
 # ____ extract this_version data ______________________________________________
 results_data = dict()
@@ -50,12 +58,3 @@ for case in os.listdir(results_dir):
     case_files = {basename(x): x for x in finder('*', join(results_dir, case))}
     results_data.update({case: case_files})
 pickle_to_file(results_data, 'target_data.pick')
-
-# ____ extract gold standard data _____________________________________________
-with tarfile.open(gs_tar) as tar:
-    tar.extractall(examples_dir)
-gs_data = dict()
-for case in os.listdir(gs_dir):
-    case_files = {basename(x): x for x in finder('*', join(gs_dir, case))}
-    gs_data.update({case: case_files})
-pickle_to_file(gs_data, 'reference_data.pick')
