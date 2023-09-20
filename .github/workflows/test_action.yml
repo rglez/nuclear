@@ -1,37 +1,40 @@
 name: Test-Python-package
-
 on: [push]
 
-defaults:
- run:
-  working-directory: ./
+#defaults:
+# run:
+#  working-directory: ./
 
 jobs:
-  build:
 
+  # building several Python versions on ubuntu-latest
+  build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: ["3.8", "3.9", "3.10", "3.11"]
 
     steps:
+      # checking out the repo for accessing files
       - uses: actions/checkout@v4
 
+      # setting up the Python version for this job
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
 
+      # installing last published version of nuclear from PyPI
       - name: Install dependencies & latest nuklear
         run: |
           python -m pip install --upgrade pip
-          pip install ruff pytest
+          pip install pytest
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           pip install -r requirements.txt nuklear
           python -m pip install --upgrade nuklear
 
+      # running tests
       - name: Test with pytest
         run: |
-          python ./tests/01_arrange.py; ls -R ./; echo $PWD
-          python ./tests/02_act.py
+          python ./tests/data_runner.py
           pytest ./tests/test_cases.py
