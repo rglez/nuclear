@@ -34,11 +34,16 @@ def pickle_to_file(data, file_name):
     return file_name
 
 
-root_dir = dirname(abspath(sys.argv[1]))
+root_dir = dirname(abspath(__file__))
 examples_dir = join(root_dir, 'examples')
 results_dir = join(root_dir, 'examples', 'results')
 gs_dir = join(root_dir, 'examples', 'results-GS-001')
 gs_tar = join(root_dir, 'examples', 'results-GS-001.tar')
+
+print(root_dir)
+assert os.path.exists(gs_tar)
+assert os.path.exists(examples_dir)
+assert os.path.exists(results_dir)
 
 # ____ extract this_version data ______________________________________________
 results_data = dict()
