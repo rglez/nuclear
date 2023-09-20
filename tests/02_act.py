@@ -2,7 +2,6 @@
 import fnmatch
 import os
 import pickle
-import sys
 import tarfile
 from os.path import basename, join, abspath, dirname
 
