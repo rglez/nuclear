@@ -2,7 +2,6 @@
 import fnmatch
 import os
 import shutil
-import subprocess
 from os.path import join, abspath, dirname
 
 
@@ -45,10 +44,11 @@ os.chdir(examples_dir)
 nuclear_py = shutil.which('nuclear')
 
 for cfg in cfgs:
-    process = subprocess.Popen([nuclear_py, cfg], stdout=subprocess.PIPE,
-                               stderr=subprocess.PIPE)
-    output, error = process.communicate()
-    print(output)
-    if process.returncode != 0:
-        raise Exception(
-            f"File handling failed {process.returncode} {output} {error}")
+    # process = subprocess.Popen([nuclear_py, cfg], stdout=subprocess.PIPE,
+    #                            stderr=subprocess.PIPE)
+    # output, error = process.communicate()
+    # print(output)
+    # if process.returncode != 0:
+    #     raise Exception(
+    #         f"File handling failed {process.returncode} {output} {error}")
+    os.system(f'{nuclear_py} {cfg}')
