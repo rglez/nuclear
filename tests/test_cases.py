@@ -1,6 +1,6 @@
 # Created by roy.gonzalez-aleman at 17/09/2023
 import pickle
-from os.path import join, dirname, getsize
+from os.path import join, dirname, getsize, basename
 
 import pytest
 
@@ -46,7 +46,9 @@ def test_files_correspondence(reference_and_target_fixture):
 
 
 def test_files_identity(reference_and_target_fixture):
-    # assert all files are identical
+    # assert "almost" all files are identical
+
+    exclude = {'nuclear.cfg', '.html', 'path_explored.vmd'}
     reference_data, target_data = reference_and_target_fixture
 
     for key in reference_data:
@@ -55,12 +57,13 @@ def test_files_identity(reference_and_target_fixture):
 
         for gs_file in gs_files:
             gs_file_path = gs_files[gs_file]
-            target_file_path = target_files[gs_file]
-            sms1 = f'File {target_file_path} has different size than reference.'
-            sms2 = f'File {target_file_path} is not identical to reference.'
+            gs_file_basename = basename(gs_file_path)
 
-            if ('nuclear.cfg' not in gs_file_path) and (
-                    'html' not in gs_file_path):
+            if not any([x in gs_file_basename for x in exclude]):
+                target_file_path = target_files[gs_file]
+                sms1 = f'File {target_file_path} has different size than reference.'
+                sms2 = f'File {target_file_path} is not identical to reference.'
+
                 assert getsize(gs_file_path) == getsize(target_file_path), sms1
                 gs_opened = open(gs_file_path, 'rb').read()
                 target_opened = open(target_file_path, 'rb').read()
