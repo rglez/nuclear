@@ -10,3 +10,4 @@ setuptools==68.2.2
 numpy>=1.23.2,<1.24
 
 sphinx==7.1.2
+linkify
