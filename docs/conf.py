@@ -8,8 +8,8 @@
 # serve to show the default.
 
 import os
-import sys
 import shutil
+import sys
 
 # -- Path setup --------------------------------------------------------------
 
@@ -72,11 +72,12 @@ extensions = [
     "sphinx.ext.ifconfig",
     "sphinx.ext.mathjax",
     "sphinx.ext.napoleon",
+    'myst_parser',
+    'sphinx_rtd_theme'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
-
 
 # Enable markdown
 extensions.append("myst_parser")
@@ -105,7 +106,7 @@ source_suffix = [".rst", ".md"]
 master_doc = "index"
 
 # General information about the project.
-project = "nuclear"
+project = "NUCLEAR"
 copyright = "2023, rglez"
 
 # The version info for the project you're documenting, acts as replacement for
@@ -122,7 +123,8 @@ except ImportError:
     version = ""
 
 if not version or version.lower() == "unknown":
-    version = os.getenv("READTHEDOCS_VERSION", "unknown")  # automatically set by RTD
+    version = os.getenv("READTHEDOCS_VERSION",
+                        "unknown")  # automatically set by RTD
 
 release = version
 
@@ -166,20 +168,26 @@ pygments_style = "sphinx"
 # If this is True, todo emits a warning for each TODO entries. The default is False.
 todo_emit_warnings = True
 
-
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = "alabaster"
+html_theme = "sphinx_rtd_theme"
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
 html_theme_options = {
-    "sidebar_width": "300px",
-    "page_width": "1200px"
+    "logo_only": True,
+    "display_version": True,
+    # Toc options
+    'collapse_navigation': True,
+    'sticky_navigation': True,
+    'navigation_depth': 4,
+    'includehidden': True,
+    'titles_only': False
 }
+html_logo = "./figs/nuclear_logo_white.png"
 
 # Add any paths that contain custom themes here, relative to this directory.
 # html_theme_path = []
@@ -247,8 +255,7 @@ html_static_path = ["_static"]
 # html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = "nuclear-doc"
-
+htmlhelp_basename = "NUCLEAR-doc"
 
 # -- Options for LaTeX output ------------------------------------------------
 
@@ -264,7 +271,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-    ("index", "user_guide.tex", "nuclear Documentation", "rglez", "manual")
+    ("index", "user_guide.tex", "NUCLEAR Documentation", "rglez", "manual")
 ]
 
 # The name of an image file (relative to this directory) to place at the top of

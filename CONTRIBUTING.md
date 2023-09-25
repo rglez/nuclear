@@ -103,8 +103,6 @@ conda activate nuclear
 
    to be able to import the package under development in the Python REPL.
 
-   ```{todo} if you are not using pre-commit, please remove the following item:
-   ```
 
 
 ### Implement your changes

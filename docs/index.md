@@ -1,39 +1,24 @@
-# nuclear
+# NUCLEAR
 
-NUCLeotide AssembleR
+The NUCLEotide AssembleR (NUCLEAR) is a graph-inspired solution for the *in-silico* fragment-based design of oligonucleotides. NUCLEAR fragments can be any standard or modified mono-nucleotide configuration parsed from the output of the MCSS docking software. NUCLEAR can also generate molecular hotspots by clustering the nucleotide MCSS docking results in sets of 'popular' regions of the receptor surface. All the necessary parameters to run the program can be specified by the user through a configuration file.
 
+![NUCLEAR workflow](figs/R3_nuclear_workflow.png)
 
-## Note
-
-> This is the main page of your project's [Sphinx] documentation. It is
-> formatted in [Markdown]. Add additional pages by creating md-files in
-> `docs` or rst-files (formatted in [reStructuredText]) and adding links to
-> them in the `Contents` section below.
->
-> Please check [Sphinx] and [MyST] for more information
-> about how to document your project and how to configure your preferences.
+In a single job, users can request one of two exclusive explorations: either **(i)** a molecular hotspots search (to gain insights into the most accessible regions of the receptor) or **(ii)** an oligonucleotide search (to find geometrically linkable nucleotides that best interact with a receptor macromolecule). In the former case, a local or global receptor region can be defined, while the oligo-nucleotide sequence can be optionally specified in the latter.
 
 
-## Contents
+
+
 
 ```{toctree}
 :maxdepth: 2
+:hidden:
 
-Overview <readme>
-Contributions & Help <contributing>
+Installation <installation>
+Parameters <parameters>
+Help & Contributions <contributing>
 License <license>
-Authors <authors>
 Changelog <changelog>
-Module Reference <api/modules>
+Authors <authors>
+
 ```
-
-## Indices and tables
-
-* {ref}`genindex`
-* {ref}`modindex`
-* {ref}`search`
-
-[Sphinx]: http://www.sphinx-doc.org/
-[Markdown]: https://daringfireball.net/projects/markdown/
-[reStructuredText]: http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html
-[MyST]: https://myst-parser.readthedocs.io/en/latest/
