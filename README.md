@@ -16,11 +16,11 @@ pip install -r requirements.txt nuklear
 
 After installation, you should be able to run NUCLEAR as follows:
 
-```$ nuclear path-to-config-file.cfg```
+```nuclear path-to-config-file.cfg```
 
 
 # Documentation
-The extensive documentation of the project will be soon available.
+The official documentation of the project is available [here](https://nucleotide-assembler.readthedocs.io).
 
 
 # Changelog
